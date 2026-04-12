@@ -1105,6 +1105,22 @@
     </div>
   </section>
 
+  <!-- Video Section -->
+  <section class="section section-dark" style="padding-bottom:0;">
+    <div class="section-inner" data-reveal>
+      <div style="text-align:center; max-width:600px; margin:0 auto 36px;">
+        <div class="section-kicker">See It For Yourself</div>
+        <h2 class="section-heading">Orkney from the water</h2>
+      </div>
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <iframe id="orcaVideo" src="https://www.youtube.com/embed/yUZgmY9utcw?start=24&autoplay=0&controls=1&rel=0&modestbranding=1&enablejsapi=1&origin=https://orkney-mockups.pages.dev"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          allow="autoplay; encrypted-media" allowfullscreen loading="lazy"
+          title="Orkney Boat Charter — wildlife tour footage"></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- Photo Break — Quote -->
   <div class="photo-break">
     <img src="./images/dolphins-swimming-blue-water.jpg" alt="Dolphins swimming in calm blue Orkney waters" loading="lazy">
@@ -1336,6 +1352,30 @@
     const nav = document.getElementById('mainNav');
     toggle.addEventListener('click', () => { toggle.classList.toggle('open'); nav.classList.toggle('open'); });
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); nav.classList.remove('open'); }));
+
+    // YouTube loop: 24s to 1:10
+    var ytTag = document.createElement('script');
+    ytTag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(ytTag);
+    var ytPlayer;
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('orcaVideo', {
+        events: {
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.PLAYING) {
+              (function checkTime() {
+                if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getCurrentTime() >= 70) {
+                  ytPlayer.seekTo(24, true);
+                }
+                if (ytPlayer && ytPlayer.getPlayerState && ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+                  setTimeout(checkTime, 500);
+                }
+              })();
+            }
+          }
+        }
+      });
+    };
 
     // Tracking
     var API = "https://leadsmanager-craigsand123s-projects.vercel.app/api/ingest";
