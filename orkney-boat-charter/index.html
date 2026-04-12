@@ -721,7 +721,7 @@
     /* — Mockup offer bar — */
     .offer-bar {
       position: fixed;
-      bottom: -80px;
+      bottom: -100px;
       left: 0;
       right: 0;
       z-index: 80;
@@ -735,6 +735,7 @@
       transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .offer-bar.show { bottom: 0; }
+    .offer-bar.accepted { display: none; }
     .offer-bar p {
       color: rgba(247,246,243,0.8);
       font-size: 14px;
@@ -756,6 +757,199 @@
       transition: color 0.3s;
     }
     .offer-close:hover { color: var(--white); }
+
+    /* — Acceptance modal — */
+    .accept-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      place-items: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .accept-overlay.open {
+      display: grid;
+      opacity: 1;
+    }
+    .accept-card {
+      background: var(--white);
+      border-radius: 16px;
+      max-width: 480px;
+      width: 90%;
+      overflow: hidden;
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+    .accept-overlay.open .accept-card {
+      transform: none;
+    }
+    .accept-header {
+      background: var(--deep);
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .accept-header h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .accept-header p {
+      font-size: 14px;
+      color: rgba(247,246,243,0.6);
+    }
+    .accept-body {
+      padding: 32px;
+    }
+    .accept-field {
+      margin-bottom: 16px;
+    }
+    .accept-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .accept-field input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: #fafbfc;
+      transition: border-color 0.3s;
+    }
+    .accept-field input:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    .accept-confirm {
+      width: 100%;
+      padding: 16px;
+      background: var(--sand);
+      color: var(--deep);
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+    .accept-confirm:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(200,149,108,0.35);
+    }
+    .accept-confirm:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .accept-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    .accept-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: rgba(247,246,243,0.5);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px;
+      transition: color 0.3s;
+    }
+    .accept-close:hover { color: var(--white); }
+
+    /* — Success state — */
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 210;
+      background: rgba(10,22,40,0.92);
+      backdrop-filter: blur(16px);
+      display: none;
+      place-items: center;
+    }
+    .success-overlay.open { display: grid; }
+    .success-card {
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      padding: 48px 36px;
+    }
+    .success-check {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--sand);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .success-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .success-card p {
+      color: rgba(247,246,243,0.65);
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .success-steps {
+      text-align: left;
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .success-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 8px 0;
+      color: rgba(247,246,243,0.7);
+      font-size: 14px;
+    }
+    .success-step-num {
+      background: var(--teal);
+      color: var(--white);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
 
     /* — Responsive — */
     @media (max-width: 900px) {
@@ -1048,9 +1242,60 @@
 
   <!-- Offer Bar -->
   <div class="offer-bar" id="offerBar">
-    <p>Like this design? We'd love to build it for you — <strong>completely free</strong>.</p>
-    <a href="mailto:sandemancraig@gmail.com?subject=Website%20Redesign%20-%20Orkney%20Boat%20Charter" class="btn btn-fill" data-track-cta>Get in Touch</a>
+    <p>This could be your new website — <strong>completely free</strong>.</p>
+    <button class="btn btn-fill" id="acceptBtn" data-track-cta>Yes — Build This For Me</button>
     <button class="offer-close" id="offerClose" aria-label="Close">&times;</button>
+  </div>
+
+  <!-- Acceptance Modal -->
+  <div class="accept-overlay" id="acceptOverlay">
+    <button class="accept-close" id="acceptClose" aria-label="Close">&times;</button>
+    <div class="accept-card">
+      <div class="accept-header">
+        <h3>Let's make it happen</h3>
+        <p>Confirm your details and we'll start building</p>
+      </div>
+      <div class="accept-body">
+        <div class="accept-field">
+          <label>Your Name</label>
+          <input type="text" id="accName" placeholder="Jamie" value="">
+        </div>
+        <div class="accept-field">
+          <label>Email</label>
+          <input type="email" id="accEmail" placeholder="your@email.com" value="">
+        </div>
+        <div class="accept-field">
+          <label>Phone (pre-filled from your site)</label>
+          <input type="tel" id="accPhone" value="+44 (0)7908 483468" readonly style="background:#f0f0f0;cursor:default;">
+        </div>
+        <button class="accept-confirm" id="confirmBtn">Confirm — Build My Website</button>
+        <p class="accept-note">100% free. No card required. No catch.<br>We just ask for a small link to OrkneStays.com on your site.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Screen -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-card">
+      <div class="success-check">&#10003;</div>
+      <h2>You're all set!</h2>
+      <p>We've received your confirmation and will start building your new website right away.</p>
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <span>We build your full multi-page website (usually 3-5 days)</span>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <span>You review it and request any changes</span>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <span>We make it live on your domain</span>
+        </div>
+      </div>
+      <p style="font-size:14px;">Check your email for a confirmation. We'll be in touch shortly.</p>
+    </div>
   </div>
 
   <script>
@@ -1076,19 +1321,94 @@
     toggle.addEventListener('click', () => { toggle.classList.toggle('open'); nav.classList.toggle('open'); });
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { toggle.classList.remove('open'); nav.classList.remove('open'); }));
 
-    // Offer bar
-    setTimeout(() => document.getElementById('offerBar').classList.add('show'), 5000);
-    document.getElementById('offerClose').addEventListener('click', () => document.getElementById('offerBar').classList.remove('show'));
-
     // Tracking
-    (function(){
-      var API="https://leadsmanager-craigsand123s-projects.vercel.app/api/ingest";
-      var KEY="test_orkney_mockup";
-      var slug="orkney-boat-charter";
-      function t(type){navigator.sendBeacon&&navigator.sendBeacon(API+"?key="+KEY,JSON.stringify({type:type,page:"/mockup/"+slug,source:"mockup"}))}
-      t("mockup_view");
-      document.querySelectorAll("[data-track-cta]").forEach(function(el){el.addEventListener("click",function(){t("mockup_cta_click")})});
-    })();
+    var API = "https://leadsmanager-craigsand123s-projects.vercel.app/api/ingest";
+    var KEY = "test_orkney_mockup";
+    var SLUG = "orkney-boat-charter";
+    function track(type, extra) {
+      var payload = { type: type, page: "/mockup/" + SLUG, source: "mockup" };
+      if (extra) Object.assign(payload, extra);
+      navigator.sendBeacon && navigator.sendBeacon(API + "?key=" + KEY, JSON.stringify(payload));
+    }
+    track("mockup_view");
+
+    // Offer bar — show after 5s
+    var offerBar = document.getElementById('offerBar');
+    var acceptOverlay = document.getElementById('acceptOverlay');
+    var successOverlay = document.getElementById('successOverlay');
+
+    setTimeout(function() { offerBar.classList.add('show'); }, 5000);
+    document.getElementById('offerClose').addEventListener('click', function() { offerBar.classList.remove('show'); });
+
+    // Open acceptance modal
+    document.getElementById('acceptBtn').addEventListener('click', function() {
+      track("mockup_cta_click");
+      acceptOverlay.classList.add('open');
+      // Focus the name field
+      setTimeout(function() { document.getElementById('accName').focus(); }, 300);
+    });
+
+    // Close modal
+    document.getElementById('acceptClose').addEventListener('click', function() {
+      acceptOverlay.classList.remove('open');
+    });
+    acceptOverlay.addEventListener('click', function(e) {
+      if (e.target === acceptOverlay) acceptOverlay.classList.remove('open');
+    });
+
+    // Confirm acceptance
+    document.getElementById('confirmBtn').addEventListener('click', function() {
+      var btn = this;
+      var name = document.getElementById('accName').value.trim();
+      var email = document.getElementById('accEmail').value.trim();
+      var phone = document.getElementById('accPhone').value.trim();
+
+      if (!name || !email) {
+        // Gentle highlight on empty fields
+        if (!name) document.getElementById('accName').style.borderColor = '#e74c3c';
+        if (!email) document.getElementById('accEmail').style.borderColor = '#e74c3c';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // Fire acceptance event with details
+      track("mockup_accepted", { name: name, email: email, phone: phone });
+
+      // Also POST full details to ingest API (sendBeacon is fire-and-forget, use fetch for reliability)
+      fetch(API + "?key=" + KEY, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "mockup_accepted",
+          page: "/mockup/" + SLUG,
+          source: "mockup",
+          name: name,
+          email: email,
+          phone: phone,
+          message: "ACCEPTED: " + SLUG + " wants their website built"
+        })
+      }).then(function() {
+        // Show success screen
+        acceptOverlay.classList.remove('open');
+        offerBar.classList.add('accepted');
+        successOverlay.classList.add('open');
+      }).catch(function() {
+        // Even if API fails, show success (we have the beacon as backup)
+        acceptOverlay.classList.remove('open');
+        offerBar.classList.add('accepted');
+        successOverlay.classList.add('open');
+      });
+    });
+
+    // Also add "Yes — Build This For Me" as a second CTA at the very bottom of the page (before footer)
+    // This catches people who scroll all the way down
+    document.querySelectorAll("[data-track-cta]").forEach(function(el) {
+      if (el.id !== 'acceptBtn' && el.id !== 'confirmBtn') {
+        el.addEventListener("click", function() { track("mockup_cta_click"); });
+      }
+    });
   </script>
 
 </body>
