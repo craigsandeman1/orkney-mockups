@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scapa Flow Charters — Dive the Legendary Wrecks of Orkney</title>
+<meta name="description" content="Dive the legendary German High Seas Fleet in Scapa Flow, Orkney. Liveaboard charters aboard MV Jean Elaine and MV Sharon Rose with skipper Andy Cuthbertson.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<img src="https://www.orkneystays.com/api/track/20" width="1" height="1" style="position:absolute;opacity:0" alt="">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0a1628;
+  --navy-light: #111d33;
+  --navy-mid: #162440;
+  --teal: #0d7377;
+  --teal-light: #10969b;
+  --brass: #c9a84c;
+  --brass-dim: rgba(201, 168, 76, 0.3);
+  --cream: #f5f3ee;
+  --cream-dim: rgba(245, 243, 238, 0.7);
+  --cream-faint: rgba(245, 243, 238, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--navy);
+  color: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── REVEAL ANIMATION ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="1"] { transition-delay: 0.12s; }
+[data-reveal-delay="2"] { transition-delay: 0.24s; }
+[data-reveal-delay="3"] { transition-delay: 0.36s; }
+[data-reveal-delay="4"] { transition-delay: 0.48s; }
+[data-reveal-delay="5"] { transition-delay: 0.6s; }
+
+/* ── GLOBAL TYPOGRAPHY ── */
+h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brass);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.section-label::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--brass);
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(10, 22, 40, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.nav-brand span { color: var(--brass); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--brass);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.nav-cta:hover {
+  background: var(--brass);
+  color: var(--navy);
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('./images/hero-diver-wreck-hd.webp') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 20s ease-out forwards;
+}
+@keyframes heroZoom {
+  to { transform: scale(1); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.1) 40%, rgba(10,22,40,0.7) 75%, rgba(10,22,40,1) 100%),
+    linear-gradient(90deg, rgba(10,22,40,0.5) 0%, transparent 50%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 5vw 8vh;
+  max-width: 800px;
+}
+.hero-depth {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.5s forwards;
+}
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s forwards;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--brass);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--cream-dim);
+  max-width: 520px;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 5vw;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 1.3s forwards;
+}
+.hero-scroll span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass-dim);
+  writing-mode: vertical-rl;
+}
+.hero-scroll .line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, var(--brass), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--navy-light);
+  border-top: 1px solid var(--cream-faint);
+  border-bottom: 1px solid var(--cream-faint);
+  padding: 3rem 5vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.stat { text-align: center; }
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.5rem;
+  color: var(--brass);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-top: 0.5rem;
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 10rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.about-image {
+  position: relative;
+}
+.about-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(1.05);
+}
+.about-image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid var(--brass-dim);
+  z-index: -1;
+}
+.about-text h2 {
+  font-size: 2.8rem;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+}
+.about-text h2 em { font-style: italic; color: var(--brass); }
+.about-text p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  margin-bottom: 1.5rem;
+}
+.about-creds {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--cream-faint);
+}
+.cred {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(13, 115, 119, 0.3);
+}
+
+/* ── VESSELS ── */
+.vessels {
+  padding: 8rem 5vw;
+  background: var(--navy-light);
+}
+.vessels-header {
+  max-width: 1300px;
+  margin: 0 auto 5rem;
+}
+.vessels-header h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.vessels-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+}
+.vessel-card {
+  background: var(--navy);
+  border: 1px solid var(--cream-faint);
+  overflow: hidden;
+  transition: border-color 0.4s;
+}
+.vessel-card:hover { border-color: var(--brass-dim); }
+.vessel-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  filter: contrast(1.05);
+  transition: transform 0.6s;
+}
+.vessel-card:hover img { transform: scale(1.03); }
+.vessel-info { padding: 2.5rem; }
+.vessel-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.vessel-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 1.5rem;
+}
+.vessel-info p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--cream-dim);
+  margin-bottom: 1.5rem;
+}
+.vessel-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cream-faint);
+}
+.spec-item {
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+}
+.spec-item strong {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+/* ── DIVE SITES ── */
+.divesites {
+  padding: 10rem 5vw;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.divesites h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.divesites-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--cream-dim);
+  max-width: 650px;
+  margin-bottom: 4rem;
+}
+.wreck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.wreck-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: default;
+}
+.wreck-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s, filter 0.6s;
+  filter: brightness(0.7) contrast(1.1);
+}
+.wreck-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.9) contrast(1.1);
+}
+.wreck-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(10,22,40,0.95) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+.wreck-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+.wreck-card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.wreck-list {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.wreck-category h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--brass);
+}
+.wreck-category ul {
+  list-style: none;
+}
+.wreck-category li {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--cream-dim);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--cream-faint);
+}
+.wreck-category li:last-child { border-bottom: none; }
+
+/* ── MARINE LIFE GALLERY ── */
+.gallery {
+  padding: 8rem 5vw;
+  background: var(--navy-light);
+}
+.gallery-header {
+  max-width: 1300px;
+  margin: 0 auto 4rem;
+}
+.gallery-header h2 { font-size: 2.8rem; }
+.gallery-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(2) { grid-column: span 2; }
+.gallery-item:nth-child(3) { grid-column: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-item:nth-child(5) { grid-column: span 2; }
+.gallery-item:nth-child(6) { grid-column: span 2; }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  transition: transform 0.6s;
+  filter: brightness(0.85) contrast(1.05);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(transparent, rgba(10,22,40,0.85));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; }
+
+/* ── CONTACT ── */
+.contact {
+  padding: 10rem 5vw;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+.contact h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+.contact p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  margin-bottom: 1.5rem;
+}
+.contact-details {
+  margin-top: 2rem;
+}
+.contact-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--cream-faint);
+}
+.contact-row-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  min-width: 100px;
+  padding-top: 0.15rem;
+}
+.contact-row-value {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--cream);
+}
+.contact-row-value a {
+  color: var(--teal-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-row-value a:hover { color: var(--brass); }
+.contact-right {
+  background: var(--navy-light);
+  border: 1px solid var(--cream-faint);
+  padding: 3rem;
+}
+.contact-right h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+.contact-right p {
+  font-size: 1.05rem;
+}
+.booking-note {
+  background: rgba(13, 115, 119, 0.1);
+  border-left: 3px solid var(--teal);
+  padding: 1.25rem 1.5rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+}
+.contact-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: var(--brass);
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.contact-cta:hover {
+  background: var(--cream);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 3rem 5vw;
+  border-top: 1px solid var(--cream-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: var(--cream-dim);
+}
+.footer-right {
+  font-size: 0.75rem;
+  color: rgba(245,243,238,0.3);
+}
+
+/* ── STICKY CTA BAR ── */
+.cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid var(--brass-dim);
+  padding: 0.85rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  transform: translateY(100%);
+  animation: slideUp 0.6s 3s forwards;
+}
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+.cta-bar-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--cream-dim);
+}
+.cta-bar-btn {
+  display: inline-block;
+  padding: 0.65rem 1.8rem;
+  background: #22c55e;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  animation: ctaPulse 2s ease-in-out infinite;
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  50% { box-shadow: 0 0 20px 5px rgba(34, 197, 94, 0.25); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hero-content { padding: 0 1.5rem 6vh; }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .stat-number { font-size: 2rem; }
+  .about {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem;
+    gap: 3rem;
+  }
+  .about-image img { height: 350px; }
+  .about-image::before { display: none; }
+  .about-text h2 { font-size: 2rem; }
+  .about-creds { flex-wrap: wrap; gap: 0.75rem; }
+  .vessels { padding: 5rem 1.5rem; }
+  .vessels-grid { grid-template-columns: 1fr; }
+  .vessels-header h2 { font-size: 2rem; }
+  .divesites {
+    padding: 5rem 1.5rem;
+  }
+  .divesites h2 { font-size: 2rem; }
+  .wreck-grid { grid-template-columns: 1fr; }
+  .wreck-list { grid-template-columns: 1fr; }
+  .gallery { padding: 5rem 1.5rem; }
+  .gallery-header h2 { font-size: 2rem; }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(n) { grid-column: span 1; }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem;
+    gap: 3rem;
+  }
+  .contact h2 { font-size: 2rem; }
+  .hero-scroll { display: none; }
+  .cta-bar { display: none; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (max-width: 500px) {
+  .hero h1 { font-size: 2.4rem; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">Scapa Flow <span>Charters</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#vessels">Vessels</a></li>
+    <li><a href="#divesites">Dive Sites</a></li>
+    <li><a href="#gallery">Marine Life</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:enquiry@jeanelaine.co.uk" class="nav-cta">Book a Charter</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-depth">58&deg; 57' N &mdash; Stromness, Orkney</div>
+    <h1>Scapa Flow<br><em>Charters</em></h1>
+    <p class="hero-sub">Dive the legendary German High Seas Fleet from Stromness, Orkney. Two decades of wreck diving expertise aboard MV Jean Elaine and MV Sharon Rose.</p>
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat" data-reveal>
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Years in Scapa Flow</div>
+  </div>
+  <div class="stat" data-reveal data-reveal-delay="1">
+    <div class="stat-number">2</div>
+    <div class="stat-label">Charter Vessels</div>
+  </div>
+  <div class="stat" data-reveal data-reveal-delay="2">
+    <div class="stat-number">12</div>
+    <div class="stat-label">Divers Per Charter</div>
+  </div>
+  <div class="stat" data-reveal data-reveal-delay="3">
+    <div class="stat-number">50+</div>
+    <div class="stat-label">Dive Sites</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image" data-reveal>
+    <img src="./images/skipper-andy-cuthbertson-hd.webp" alt="Skipper Andy Cuthbertson">
+  </div>
+  <div class="about-text">
+    <div class="section-label" data-reveal>About</div>
+    <h2 data-reveal data-reveal-delay="1">Led by skipper<br><em>Andy Cuthbertson</em></h2>
+    <p data-reveal data-reveal-delay="2">Scapa Flow Charters has been providing diving charters in Scapa Flow, Orkney's North Isles, Shetland, East and West coast of Scotland including Wick and St Kilda for nearly 20 years.</p>
+    <p data-reveal data-reveal-delay="3">Andy is an experienced boatman and diver with a vast knowledge of the history and location of wrecks. He is a DoT/RYA certified skipper with HSE, IANTD and sport diving qualifications. If there are any questions, just ask him.</p>
+    <p data-reveal data-reveal-delay="3">Scapa Flow has opened up access to some fantastic wreck diving and scenic diving in the clean waters and unspoilt environment of Scotland's Northern Isles.</p>
+    <div class="about-creds" data-reveal data-reveal-delay="4">
+      <span class="cred">DoT/RYA Certified</span>
+      <span class="cred">HSE Qualified</span>
+      <span class="cred">IANTD Instructor</span>
+      <span class="cred">MCA Cat II</span>
+    </div>
+  </div>
+</section>
+
+<!-- VESSELS -->
+<section class="vessels" id="vessels">
+  <div class="vessels-header">
+    <div class="section-label" data-reveal>The Fleet</div>
+    <h2 data-reveal data-reveal-delay="1">Our Vessels</h2>
+  </div>
+  <div class="vessels-grid">
+    <div class="vessel-card" data-reveal>
+      <img src="./images/jean-elaine-bow-at-sea-hd.webp" alt="MV Jean Elaine at sea">
+      <div class="vessel-info">
+        <h3>MV Jean Elaine</h3>
+        <div class="vessel-type">Primary Charter Vessel &mdash; Liveaboard</div>
+        <p>A large and stable diving platform, fully fitted as a self-catering liveaboard charterboat sleeping twelve divers in comfort. Spacious saloon, copious deck space and a drying/changing room makes kitting up that much more comfortable.</p>
+        <div class="vessel-specs">
+          <div class="spec-item"><strong>Engine</strong>232HP Gardner Diesel</div>
+          <div class="spec-item"><strong>Berths</strong>12 Divers (4+3 cabins)</div>
+          <div class="spec-item"><strong>Certification</strong>MCA Code Cat II</div>
+          <div class="spec-item"><strong>Range</strong>60 Miles Offshore</div>
+          <div class="spec-item"><strong>Air</strong>Twin 12 cu ft Compressors</div>
+          <div class="spec-item"><strong>Gas</strong>IANTD Nitrox Facility</div>
+          <div class="spec-item"><strong>Navigation</strong>VHF, Radar, GPS, Sounder</div>
+          <div class="spec-item"><strong>Feature</strong>Diver's Lift</div>
+        </div>
+      </div>
+    </div>
+    <div class="vessel-card" data-reveal data-reveal-delay="1">
+      <img src="./images/jean-elaine-bow-harbour-hd.webp" alt="MV Sharon Rose in harbour">
+      <div class="vessel-info">
+        <h3>MV Sharon Rose</h3>
+        <div class="vessel-type">Second Charter Vessel</div>
+        <p>Our second vessel extends our capacity and flexibility. Both boats share the same high standards of safety equipment and diving facilities, with a large fully fitted saloon, connecting galley, and comprehensive navigation systems.</p>
+        <div class="vessel-specs">
+          <div class="spec-item"><strong>Capacity</strong>Full Dive Charter</div>
+          <div class="spec-item"><strong>Galley</strong>Fully Equipped</div>
+          <div class="spec-item"><strong>Gas</strong>IANTD Nitrox Facility</div>
+          <div class="spec-item"><strong>Power</strong>240V Shore Power</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVE SITES -->
+<section class="divesites" id="divesites">
+  <div class="section-label" data-reveal>Dive Sites</div>
+  <h2 data-reveal data-reveal-delay="1">The Wrecks of<br>Scapa Flow</h2>
+  <p class="divesites-intro" data-reveal data-reveal-delay="2">Diving destinations include the world famous Scapa Flow with the remains of the German High Seas Fleet. Other locations include the Orkney North Isles, Wick, Sule Skerry, St Kilda, Shetland, Foula and Fair Isle.</p>
+
+  <div class="wreck-grid">
+    <div class="wreck-card" data-reveal>
+      <img src="./images/sms-karlsruhe-wreck-hd.webp" alt="SMS Karlsruhe wreck">
+      <div class="wreck-card-overlay">
+        <div class="wreck-card-meta">German High Seas Fleet</div>
+        <h4>SMS Karlsruhe</h4>
+      </div>
+    </div>
+    <div class="wreck-card" data-reveal data-reveal-delay="1">
+      <img src="./images/gobernador-wreck-interior-hd.webp" alt="Inside the Gobernador Bories wreck">
+      <div class="wreck-card-overlay">
+        <div class="wreck-card-meta">Burra Sound</div>
+        <h4>Gobernador Bories</h4>
+      </div>
+    </div>
+    <div class="wreck-card" data-reveal data-reveal-delay="2">
+      <img src="./images/wreck-propeller-underwater.jpg" alt="Wreck propeller underwater">
+      <div class="wreck-card-overlay">
+        <div class="wreck-card-meta">Technical Diving</div>
+        <h4>Deep Wreck Exploration</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="wreck-list" data-reveal>
+    <div class="wreck-category">
+      <h4>German High Seas Fleet</h4>
+      <ul>
+        <li>Kronprinz Wilhelm</li>
+        <li>Markgraf</li>
+        <li>SMS Brummer</li>
+        <li>SMS C&ouml;ln</li>
+        <li>SMS Dresden</li>
+        <li>SMS Karlsruhe</li>
+        <li>Bayern Gun Turrets</li>
+        <li>K&ouml;nig</li>
+      </ul>
+    </div>
+    <div class="wreck-category">
+      <h4>Burra Sound &amp; Others</h4>
+      <ul>
+        <li>Gobernador Bories</li>
+        <li>Tabarka</li>
+        <li>Doyle</li>
+        <li>Budrie</li>
+        <li>HMS Royal Oak</li>
+        <li>HMS Vanguard</li>
+        <li>Churchill Blockships</li>
+        <li>Barrel of Butter</li>
+      </ul>
+    </div>
+    <div class="wreck-category">
+      <h4>Technical Diving</h4>
+      <ul>
+        <li>U-92</li>
+        <li>U-102</li>
+        <li>HMS King Edward VII</li>
+        <li>Tamara XII</li>
+        <li>SS Bothal</li>
+        <li>Duke of Albany</li>
+        <li>North Isles Wrecks</li>
+        <li>Shetland Expeditions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MARINE LIFE GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="section-label" data-reveal>Encounters</div>
+    <h2 data-reveal data-reveal-delay="1">Marine Life</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" data-reveal>
+      <img src="./images/seal-orkney-waters-hd.webp" alt="Grey seal in Orkney waters">
+      <div class="gallery-caption">Grey Seal &mdash; Orkney Waters</div>
+    </div>
+    <div class="gallery-item" data-reveal data-reveal-delay="1">
+      <img src="./images/sunstar-underwater-hd.webp" alt="Common sunstar on seabed">
+      <div class="gallery-caption">Common Sunstar</div>
+    </div>
+    <div class="gallery-item" data-reveal data-reveal-delay="2">
+      <img src="./images/wrasse-fish-underwater-hd.webp" alt="Ballan wrasse">
+      <div class="gallery-caption">Ballan Wrasse</div>
+    </div>
+    <div class="gallery-item" data-reveal data-reveal-delay="1">
+      <img src="./images/hermit-crab-underwater-hd.webp" alt="Hermit crab">
+      <div class="gallery-caption">Hermit Crab</div>
+    </div>
+    <div class="gallery-item" data-reveal data-reveal-delay="2">
+      <img src="./images/conger-eel-wreck-hd.webp" alt="Conger eel in wreck">
+      <div class="gallery-caption">Conger Eel</div>
+    </div>
+    <div class="gallery-item" data-reveal data-reveal-delay="3">
+      <img src="./images/fish-on-wreck-hd.webp" alt="Fish on wreck structure">
+      <div class="gallery-caption">Wreck Marine Life</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="section-label" data-reveal>Get in Touch</div>
+    <h2 data-reveal data-reveal-delay="1">Book Your<br>Charter</h2>
+    <p data-reveal data-reveal-delay="2">The usual boat charter runs from Saturday to the following Saturday. Diving starts on Sunday through to Friday &mdash; two dives a day with air included. We can also arrange longer or shorter dive times, and long weekends.</p>
+    <div class="contact-details" data-reveal data-reveal-delay="3">
+      <div class="contact-row">
+        <div class="contact-row-label">Phone</div>
+        <div class="contact-row-value"><a href="tel:07774407093">07774 407 093</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-label">Enquiries</div>
+        <div class="contact-row-value"><a href="mailto:enquiry@jeanelaine.co.uk">enquiry@jeanelaine.co.uk</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-label">Skipper</div>
+        <div class="contact-row-value"><a href="mailto:andy@jeanelaine.co.uk">andy@jeanelaine.co.uk</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-row-label">Address</div>
+        <div class="contact-row-value">5 Church Road, Stromness<br>Orkney, KW16 3BA, UK</div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right" data-reveal>
+    <h3>Charter Information</h3>
+    <p>If you prefer not to live aboard, Scapa Flow Charters can help arrange shore-based accommodation. While on the boat you enjoy the added convenience and luxury a liveaboard can offer.</p>
+    <p>Included in the price: lead weights, 12 &amp; 15 litre 232-bar cylinders, and air fills from our twin independent compressors. Nitrox and other gases available on request.</p>
+    <div class="booking-note">
+      <strong>Booking:</strong> A 25% non-returnable deposit is required to secure your booking. Please check availability before sending your deposit. On receipt we will send confirmation.
+    </div>
+    <a href="mailto:enquiry@jeanelaine.co.uk?subject=Charter%20Enquiry" class="contact-cta">Enquire Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Scapa Flow Charters &mdash; Stromness, Orkney</div>
+  <div class="footer-right">
+    <a href="https://www.orkneystays.com" style="color:#666;text-decoration:none;font-size:12px">Website design by Orkney Stays</a>
+  </div>
+</footer>
+
+<!-- STICKY CTA BAR -->
+<div class="cta-bar">
+  <span class="cta-bar-text">Like this design? We built it for you &mdash; for free.</span>
+  <a href="mailto:craig@orkneystays.com?subject=Yes%20-%20Scapa%20Flow%20Charters" class="cta-bar-btn">Yes &mdash; Build This For Me</a>
+</div>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
